@@ -1,0 +1,19 @@
+#selection {
+
+}
+
+#content {
+    width: 50vw;
+    height: 50vh;
+}
+
+.hide {
+    display: none !important;
+}
+
+.site {
+    display: inline;
+    text-align: left;
+    width: 100%;
+    height: 100%;
+}

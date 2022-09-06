@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Styles/main.css">
+    <link rel="script" href="./Code/NodesTools.js">
+    <title>Document</title>
+</head>
+<body>
+    <img class="toMaximize" src="./Img/Hearts of iron.png">
+    <img class="toMaximize" src="./Img/Stellaris.jpg">
+</body>
+<script>
+    var floatingImg = false;
+
+    const elements = document.querySelectorAll('.toMaximize');
+    elements.forEach(element => {
+        element.addEventListener("click", addFloatingImage);
+    });
+
+
+    window.onclick = event => {
+
+        if(event && event.target.hasAttribute("class", "floatingImage")) return;
+
+        if(floatingImg) {
+            document.querySelectorAll(".floatingImage").forEach(element => {
+                element.remove();
+            });
+            floatingImg = false;
+        }
+    }
+
+    function addFloatingImage(event) {
+        if(!event) return;
+        let element = event.target;
+        if(!floatingImg) {
+            let floating = document.createElement("img");
+            floating.setAttribute("class", "floatingImage");
+            floating.src = element.src;
+            floatingImg = true;
+            document.body.appendChild(floating);
+        }
+        else {
+            document.getElementsByClassName("floatingImage")[0].src = element.src;
+        }
+    }
+
+</script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styles/main.css">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <div id="selection">
+            <button onclick="ChangeContent(0)">Info</button>
+            <button onclick="ChangeContent(1)">Oferta</button>
+            <button onclick="ChangeContent(2)">Surutu</button>
+            <button onclick="ChangeContent(3)">Bruh</button>
+        </div>
+        <div id="content">
+            <div class="site" id="site1"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias sit atque eum facilis? Quasi amet harum unde hic officia voluptatum nihil perferendis nesciunt eaque nisi consequatur quis, illo suscipit! Error.</div>
+            <div class="site" id="site2"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis sapiente temporibus soluta, vel ratione provident cupiditate eum rerum harum molestias deleniti, veritatis beatae nesciunt quas facere aperiam repellat adipisci, nihil exercitationem! Enim officiis tenetur ea fuga nihil ducimus dicta. Saepe?</div>
+            <div class="site" id="site3"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae harum a accusamus dolore sequi officiis quas ipsam, nulla temporibus animi est ipsum mollitia, magni sint, velit laboriosam iusto veritatis molestiae consequatur inventore. Iste ratione explicabo voluptas veritatis corporis ipsum eaque!</div>
+            <div class="site" id="site4"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut non unde saepe nisi laborum vero provident enim quaerat vitae magnam.</div>
+        </div>
+    </section>
+</body>
+<script type="text/javascript">
+    var sites = document.getElementsByClassName("site");
+    ChangeContent(0);
+
+    function ChangeContent(number) {
+        number = Number(number);
+        if(number == NaN) return;
+
+        for(let x = 0; x < sites.length; x++) {
+            let classes = sites[x].getAttribute("class");
+            let split = classes.split(' ');
+            let containtsHide = false;
+            split.forEach((val) => {
+                if(val == "hide") {
+                    containtsHide = true;
+                }
+            });
+
+            if(!containtsHide) {
+                sites[x].setAttribute("class", classes + " hide");
+            }
+        }
+
+        let newClasses = "";
+        sites[number].getAttribute("class").split(' ').forEach((val) => {
+            if(val != "hide") {
+                newClasses += val;
+            }
+        });
+        sites[number].setAttribute("class", newClasses);
+    }
+</script>
+</html>
